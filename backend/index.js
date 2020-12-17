@@ -17,6 +17,15 @@ mongoose.connect('mongodb+srv://admin:admin@cluster0.oohgu.mongodb.net/antiracis
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Orgin', '*');
+
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+
+  next()
+
+})
+
 import routes from './src/routes/antiracismRoutes'
 
 routes(app)
